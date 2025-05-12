@@ -46,18 +46,32 @@ if (edades.Contains(30)) {
 
 List<string> elementos = new List<string>();
 
-Console.WriteLine("¿Cuántos elementos querés ingresar? ");
+Console.Write("¿Cuántos elementos querés ingresar? ");
 int n = Convert.ToInt32(Console.ReadLine());
 
 for (int i = 0; i < n; i++)
 {
-    Console.Write("Elemento : "+  (i + 1)+ " "  );
+    Console.Write("Elemento " + (i + 1) + ": ");
     string entrada = Console.ReadLine();
     elementos.Add(entrada);
 }
 
-Console.Write("\nLista ingresada:");
+Console.WriteLine("\nLista ingresada:");
 foreach (var item in elementos)
 {
-    Console.Write("- " + item);
+    Console.WriteLine("- " + item);
+}
+
+Console.Write("\n¿Querés buscar un elemento? Ingresá el valor: ");
+string valorBuscado = Console.ReadLine();
+
+int indice = elementos.IndexOf(valorBuscado);
+
+if (indice != -1)
+{
+    Console.WriteLine(" El elemento " + valorBuscado + " se encuentra en la posición " + (indice+1));
+}
+else
+{
+    Console.WriteLine("El elemento" + valorBuscado + " no está en la lista.");
 }
