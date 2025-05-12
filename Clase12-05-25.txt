@@ -1,0 +1,63 @@
+//using System.Collection.Generics
+using System.Runtime.ExceptionServices;
+
+List<string> frutas = new List<string> { "bananas", "peras", "uvas" };
+
+foreach (var fruta in frutas)
+{
+    Console.WriteLine(fruta);
+}
+
+List<int> numeros = new List<int> { 1,2,3,4,5};
+for (int i = 0; i < 5; i++) {
+    Console.WriteLine(numeros[i]);
+}
+numeros.Add(6);
+numeros.Add(9);
+numeros.Insert(2, 8);
+numeros.Insert(3, 8);
+numeros.Insert(3, 7);
+numeros.Insert(3, 98);
+numeros.Remove(9);
+numeros[0] = 9;
+numeros[9] = 11;
+numeros.RemoveAt(1);
+numeros.Remove(8);
+numeros.Sort();
+
+
+
+
+Console.Clear();
+foreach (var numero in numeros) {
+    Console.WriteLine(numero);
+}
+
+List<string> tareas = new List<string> { "Estudiar", "Dormir" };
+tareas.Clear();
+Console.WriteLine("Cantidad: " + tareas.Count);
+
+
+List<int> edades = new List<int> { 25, 30,3};
+if (edades.Contains(30)) { 
+    Console.WriteLine("Encontrado");
+     }
+
+
+List<string> elementos = new List<string>();
+
+Console.WriteLine("¿Cuántos elementos querés ingresar? ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+for (int i = 0; i < n; i++)
+{
+    Console.Write("Elemento : "+  (i + 1)+ " "  );
+    string entrada = Console.ReadLine();
+    elementos.Add(entrada);
+}
+
+Console.Write("\nLista ingresada:");
+foreach (var item in elementos)
+{
+    Console.Write("- " + item);
+}
