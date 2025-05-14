@@ -1,0 +1,52 @@
+using System.Collections.Generic;
+
+HashSet<string> alumnos = new HashSet<string> { "Juan", "Dario", "Georgina", "Matias", "Carlos" };
+alumnos.Add("Maria");
+alumnos.Add("Maria");
+alumnos.Remove("Juan");
+
+foreach (string alumno in alumnos) {
+    Console.WriteLine(alumno);
+}
+if (alumnos.Contains("Dario")) {
+    Console.WriteLine("Encontrado");
+}
+int cantidad = alumnos.Count();
+//alumnos.Clear();
+Console.WriteLine("la cantidad de alumnos es: " + cantidad);
+
+
+
+
+HashSet<int> numeros = new HashSet<int> { 1, 2, 3,4,5,6 };
+HashSet<int> numeros2 = new HashSet<int> { 1,2,3,4,5,6,7};
+
+//numeros.UnionWith(numeros2); a + b el 4 no se repite 
+//numeros2.UnionWith(numeros);  b+a  el 4 no se repite 
+//numeros.IntersectWith(numeros2);   a interseccion b solo se ve el 4 
+//numeros2.ExceptWith(numeros);  //b -a   2 9 89   
+//numeros2.SymmetricExceptWith(numeros);
+bool esSubconjunto = numeros.IsSubsetOf(numeros2); // subconjunto 
+bool esSuperconjunto = numeros2.IsProperSupersetOf(numeros); // superconjunto
+ 
+Console.WriteLine("El HASHSET numeros1 es: " + esSubconjunto + " Subconjunto");
+Console.WriteLine("El HASHET numeros2 es: " + esSuperconjunto + " Superconjunto");
+
+bool iguales = numeros.SetEquals(numeros2);
+if (iguales == true)
+{
+    Console.WriteLine("los HASH son iguales");
+}
+else {
+    Console.WriteLine("Los Hash no son iguales");
+}
+    /*
+   numeros.Add(1);
+   numeros.Add(91);
+    */
+    foreach (var numero in numeros2)
+    {
+        Console.WriteLine(numero);
+
+    }
+
