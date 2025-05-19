@@ -1,0 +1,59 @@
+Dictionary<int, string> alumnos = new Dictionary<int, string>();
+alumnos.Add(1, "Pablo");
+alumnos.Add(2, "Juan");
+alumnos.Add(3, "Maria");
+
+
+//string nombre = alumnos[2];
+Console .WriteLine(alumnos[2]);
+
+if (alumnos.ContainsKey(1))
+{
+    Console.WriteLine("El alumno " + alumnos[1] + " existe en el diccionario");
+}
+else {
+    Console.WriteLine("No existe ese valor");
+}
+
+foreach(var alumno in alumnos) {
+    Console.WriteLine($"Clave: {alumno.Key}, Valor: {alumno.Value}");
+}
+alumnos[1] = "Diego";
+
+foreach (KeyValuePair<int, string> alumno in alumnos) {
+    Console.WriteLine($"{alumno.Key}, {alumno.Value}");
+}
+
+alumnos.Remove(1);
+
+foreach (KeyValuePair<int, string> alumno in alumnos)
+{
+    Console.WriteLine($"{alumno.Key}, {alumno.Value}");
+}
+
+var claves = alumnos.Keys;
+var valores = alumnos.Values;
+
+foreach (var id in claves) {
+    Console.WriteLine("ID:" + id);
+}
+
+foreach (var nombre in valores) {
+    Console.WriteLine("Nombres: " + nombre);
+}
+
+Console.WriteLine("Ingrese un id y un nombre");
+try
+{
+    int valor = int.Parse(Console.ReadLine());
+    string nom = Console.ReadLine();
+    alumnos.Add(valor, nom);
+}
+catch {
+    Console.WriteLine("El dato no es válido");
+
+}
+    foreach (KeyValuePair<int, string> alumno in alumnos)
+    {
+        Console.WriteLine($"{alumno.Key}, {alumno.Value}");
+    }
