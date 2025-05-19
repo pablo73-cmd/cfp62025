@@ -1,0 +1,11 @@
+Dictionary<string, int> inventario = new Dictionary<string, int>()
+    {
+        {"Manzanas",20 },
+        {"Bananas",10 }
+    };
+inventario["Manzanas"] += 10; // inventario["Manzanas"]= inventario["Manzanas"]+10;
+
+foreach (var item in inventario)
+{
+    Console.WriteLine(item.Key + " " + item.Value);
+}
