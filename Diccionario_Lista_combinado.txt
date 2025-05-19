@@ -1,0 +1,14 @@
+Dictionary<string, List<string> > categorias = new Dictionary<string, List<string> >();
+
+categorias["Frutas"] = new List<string> { "Manzana", "Banana", "Pera" };
+categorias["Verduras"] = new List<string> { "Zanahoria", "Lechuga" };
+categorias["Especias"] = new List<string> { "Comino", "Curry", "Cúrcuma" };
+
+foreach (var categoria in categorias)
+{
+    Console.WriteLine($"{categoria.Key}:");
+    foreach (var item in categoria.Value)
+    {
+        Console.WriteLine($"  - {item}");
+    }
+}
