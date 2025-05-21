@@ -1,0 +1,31 @@
+Dictionary<int, string> tareas = new Dictionary<int, string>();
+
+Queue<int> colaTareas = new Queue<int>();
+
+int idTarea = 1;
+
+tareas[idTarea] = "Revisar correos";
+colaTareas.Enqueue(idTarea);
+idTarea++;
+
+tareas[idTarea] = "Reunion de equipo";
+colaTareas.Enqueue(idTarea);
+idTarea++;
+
+tareas[idTarea] = "Salida con amigos";
+colaTareas.Enqueue(idTarea);
+idTarea++;
+
+Console.WriteLine(" Tareas actuales:");
+foreach (int id in colaTareas)
+{
+    Console.WriteLine(id+" "+tareas[id] );
+}
+
+
+colaTareas.Dequeue();
+
+foreach (int id in colaTareas)
+{
+    Console.WriteLine(id + " " + tareas[id]);
+}
