@@ -1,0 +1,22 @@
+        Queue<int> cola = new Queue<int>();
+        cola.Enqueue(1);
+        cola.Enqueue(2);
+        cola.Enqueue(3);
+Console.WriteLine("la cola tiene estos clientes : ");
+foreach (int numero in cola) {
+     Console.WriteLine(numero);
+}
+Console.WriteLine("Cliente atendido: ");
+Console.WriteLine(cola.Dequeue()); // lo saque de la cola y lo mande a la caja 
+Console.WriteLine("Clientes aun en espera: ");
+foreach (int numero in cola)
+{
+    Console.WriteLine(numero);
+}
+
+Console.WriteLine("A quien voy a atender ahora: Proximo turno...:");
+Console.WriteLine(cola.Peek());
+
+
+
+
