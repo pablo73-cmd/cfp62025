@@ -1,0 +1,27 @@
+Stack<int> pila = new Stack<int>();
+pila.Push(10);
+pila.Push(20);
+pila.Push(30);
+int cuantos= pila.Count();
+Console.WriteLine("Elementos en la pila");
+Console.WriteLine("La cantidad de elementos en la pila es: " + cuantos);
+foreach(int numero in pila)
+{
+    Console.WriteLine(numero);
+}
+
+
+
+Console.WriteLine("El elemento eliminado es: " + pila.Pop());
+Console.WriteLine("la cantidad de elementos en la pila es: " + pila.Count());
+int ultimoElementoIngresado = pila.Peek();
+Console.WriteLine("Leo el ultimo ingresado sin eliminarlo " + ultimoElementoIngresado);
+
+
+Console.WriteLine("Elementos en la pila");
+foreach (int numero in pila)
+{
+    Console.WriteLine(numero);
+}
+
+
