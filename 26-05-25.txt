@@ -1,0 +1,73 @@
+/*
+double numero1, numero2, resultado;
+
+Console.WriteLine("Ingrese su nombre");
+string nombre = Console.ReadLine();
+Console.WriteLine("Su nombre es: " +  nombre);
+Console.WriteLine("Ingrese un número");
+numero1 = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Ingrese otro número");
+numero2 = Double.Parse(Console.ReadLine());
+resultado = (numero1 + numero2)/2;
+Console.WriteLine("El resultado de la suma divido 2 a partir de 2 números: " + resultado);
+if (resultado > 20)
+{
+    Console.WriteLine("El valor es mayor a 20 y es muy alto");
+}
+else if (resultado == 20) {
+    Console.WriteLine("El resultado es 20");
+}
+else
+{
+    Console.WriteLine("El valor es menor a 20");
+}
+
+*/
+/*int[] numeros = { 1, 2, 3, 4, 5, 6, 7, 8 };
+int[] numeros2 = new int[] { 1, 2, 3, 4, 5 };
+string[] paises = new string[]{"Brasil", "Chile", "Argentina"};
+double[] moneda = new double[] { 1.99, 4.55, 5.01 };
+for (int i = 0; i < moneda.Length; i++) {
+    Console.WriteLine("La moneda actual es " + moneda[i]);
+}
+
+foreach (var pais in paises) {
+    Console.WriteLine("El pais actual es:" + pais);
+}
+
+
+/*
+Console.WriteLine(numeros[3]);
+
+numeros[0] = 99;
+
+Console.WriteLine(numeros[0]);
+*/
+/*
+for (int i =3; i< numeros.Length; i++)
+{
+    Console.WriteLine(numeros[i]);
+}
+
+for (int k = 0 ;k < numeros2.Length; k++) {
+    Console.WriteLine(numeros2[k]);
+}
+
+*/
+
+
+List<int> numeros4 = new List<int>();
+numeros4.Add(99);
+numeros4.Add(88);
+numeros4.Add(77);
+numeros4.Add(55);
+numeros4.Sort();
+//numeros4.Remove(88);
+
+
+//Console.WriteLine("El valor eliminado es: " + eliminado );
+foreach (var numero in numeros4)
+{
+    Console.WriteLine(numero);
+}
+
