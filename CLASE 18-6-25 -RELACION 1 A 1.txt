@@ -1,0 +1,13 @@
+-- Tabla Persona
+CREATE TABLE Personas (
+    id_persona INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+
+-- Tabla DNI (relación uno a uno)
+CREATE TABLE DNIs (
+    id_dni INT AUTO_INCREMENT PRIMARY KEY,
+    numero_dni INT(8) NOT NULL,
+    id_persona INT UNIQUE, -- Clave foránea única
+    FOREIGN KEY (id_persona) REFERENCES Personas(id_persona)
+);
