@@ -1,0 +1,44 @@
+Imagina que tienes esta información sobre una librería que vende libros por internet:
+
+> - Libro: "El código Da Vinci", autor: Dan Brown, género: Suspenso, precio: $18.50, stock: 25
+> - Libro: "Cien años de soledad", autor: Gabriel García Márquez, género: Realismo mágico, precio: $15.00, stock: 30
+> - Libro: "1984", autor: George Orwell, género: Ciencia ficción, precio: $14.90, stock: 20
+> - Libro: "El principito", autor: Antoine de Saint-Exupéry, género: Infantil, precio: $10.00, stock: 50
+>
+> - Cliente: Ana Pérez, email: ana@gmail.com, ciudad: Madrid, país: España
+> - Cliente: Luis Gómez, email: luis@hotmail.com, ciudad: Barcelona, país: España
+> - Cliente: Carla Méndez, email: carla@yahoo.com, ciudad: Buenos Aires, país: Argentina
+>
+> - Ana compró 2 ejemplares de "El código Da Vinci" el 2024-03-15
+> - Ana también compró 1 ejemplar de "El principito" el 2024-03-15
+> - Luis compró 1 ejemplar de "1984" el 2024-03-16
+> - Carla compró 3 ejemplares de "Cien años de soledad" el 2024-03-17
+>
+> - Cada venta tiene un estado: "procesando", "enviado", "entregado"
+> - Las ventas de Ana están en estado "enviado"
+> - La venta de Luis está en estado "procesando"
+> - La venta de Carla está en estado "entregado"
+>
+> - Los libros tienen ISBN: único por libro
+>   - El código Da Vinci: ISBN978-0-385-50420-1
+>   - Cien años de soledad: ISBN978-0-307-47472-8
+>   - 1984: ISBN978-0-452-28423-4
+>   - El principito: ISBN978-0-15-601219-5
+>
+> - Los clientes tienen un número de teléfono opcional
+>   - Ana: +34 600 111 222
+>   - Luis: +34 600 333 444
+>   - Carla: +54 9 11 5555-6666
+
+
+
+Tu Tarea: Diseña la Base de Datos
+
+Con esta información desordenada, debes:
+
+1. Identificar entidades (tablas).
+2. Definir atributos (columnas).
+3. Establecer tipos de datos.
+4. Crear relaciones entre tablas.
+5. Definir claves primarias y foráneas.
+6. Insertar los datos proporcionados.
