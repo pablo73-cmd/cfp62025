@@ -1,0 +1,18 @@
+using _20_08_25;
+
+
+Auto autito01 = new Auto("Ford", "Falcon");
+autito01.mostrarEstadoActual();
+autito01.Encender();
+autito01.cambiarLuces();
+autito01.Acelerar(50);
+autito01.Frenar(40);
+autito01.Doblar("derecha");
+autito01.Frenar(10);
+autito01.cambiarLuces();
+autito01.cambiarLimpiaParabrisas();
+autito01.trabarPuertas();
+autito01.cambiarRadio();
+autito01.mostrarEstadoActual();
+autito01.Apagar();
+

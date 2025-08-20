@@ -1,0 +1,193 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _20_08_25
+{
+    class Auto
+    {
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+
+        private bool encendido;
+        private int velocidad;
+        protected bool lucesEncendidas;
+        private bool puertasTrabadas;
+        private bool radioEncendida;
+        private bool limpiaparabrisasActivado;
+
+        public Auto(string marca, string modelo)
+        {
+            Marca = marca;
+            Modelo = modelo;
+            encendido = false;
+            velocidad = 0;
+            lucesEncendidas = false;
+            puertasTrabadas = false;
+            radioEncendida = false;
+            limpiaparabrisasActivado = false;
+            Console.WriteLine("Auto " + Marca + " " + Modelo + " listo para usar");
+        }
+
+        // metodo para encender el auto 
+
+        public void Encender()
+        {
+
+            if (!encendido)
+            {
+                encendido = true;
+                Console.WriteLine(" El auto " + Marca + " " + Modelo + " ha sido encendido ");
+            }
+            else
+            {
+                Console.WriteLine("Encender ");
+            }
+
+        }
+
+        // metodo para apagar el auto 
+
+        public void Apagar()
+        {
+            if (encendido)
+            {
+                if (velocidad == 0)
+                {
+                    encendido = false;
+                    Console.WriteLine("El auto ha sido apagado");
+                }
+                else
+                {
+                    Console.WriteLine("El auto no se puede apagar mientras esta en movimiento");
+                }
+
+
+            }
+
+
+
+
+        }
+
+        public void Acelerar(int incremento) {
+            if (!encendido)
+            {
+                Console.WriteLine("Debes encender el auto");
+                return; 
+            }
+            if (incremento > 0)
+            {
+                velocidad += incremento; // velocidad = velocidad + incremento 
+                Console.WriteLine("Acelerando a " + velocidad);
+
+            }
+            else {
+                Console.WriteLine("El incremento debe ser positivo");
+            
+            }
+        
+        }
+
+
+        public void Frenar(int decremento)
+        {
+            if (velocidad == 0)
+            {
+                Console.WriteLine("El auto ya esta detenido");
+                return;
+            }
+            if (decremento > 0)
+            {
+                velocidad = Math.Max(0, velocidad - decremento);
+                Console.WriteLine("Frenando a " + velocidad);
+            }
+        }
+
+        public void Doblar(string direccion) {
+
+            if (velocidad == 0) {
+                Console.WriteLine("no se puede doblar porque el auto esta detenido");
+                return;
+            }
+            if (direccion.ToLower() == "izquierda" || direccion.ToLower() == "derecha")
+            {
+                Console.WriteLine("Doblando a " + direccion + " a " + velocidad);
+            }
+            else {
+
+                Console.WriteLine("Dirección inválida");
+            }
+        
+        }
+
+        public void cambiarLuces() {
+            if (lucesEncendidas == false)
+            {
+                lucesEncendidas = true;
+                Console.WriteLine("Las luces estan encendidas");
+            }
+            else {
+                lucesEncendidas = false;
+                Console.WriteLine("Las luces estan apagadas");
+            }
+        }
+
+        public void cambiarLimpiaParabrisas() {
+
+            if (limpiaparabrisasActivado == false)
+            {
+                limpiaparabrisasActivado = true;
+                Console.WriteLine("El limpiaparabrisas fue activado");
+            }
+            else {
+                limpiaparabrisasActivado = false;
+                Console.WriteLine("El limpiaparabrisas fue desactivado");
+            }
+        
+        }
+
+        public void trabarPuertas() {
+            if (puertasTrabadas == false)
+            {
+                puertasTrabadas = true;
+                Console.WriteLine(" Las puertas se han trabado");
+
+            }
+            else {
+                puertasTrabadas = false;
+                Console.WriteLine("Las puertas se han destrabado");
+            }
+        
+        }
+
+        public void cambiarRadio() {
+            if (radioEncendida == false)
+            {
+                radioEncendida = true;
+                Console.WriteLine("La radio se ha encendido");
+            }
+            else {
+               radioEncendida =false;
+                Console.WriteLine("la radio se ha apagado");
+            }
+        }
+
+        public void mostrarEstadoActual() {
+            Console.WriteLine("------- Estado del Auto----------");
+            Console.WriteLine("Marca " + Marca);
+            Console.WriteLine("Modelo " + Modelo);
+            Console.WriteLine("Encendido " + encendido);
+            Console.WriteLine("Velocidad " + velocidad);
+            Console.WriteLine("Luces " + lucesEncendidas);
+            Console.WriteLine("Puertas " + puertasTrabadas);
+            Console.WriteLine("Radio " + radioEncendida);
+            Console.WriteLine("Limpiaparabrisas " + limpiaparabrisasActivado);
+            Console.WriteLine("-------------------------------");
+        }
+       
+
+    }
+}
