@@ -1,0 +1,100 @@
+
+using System;
+using System.Data;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
+namespace _221025
+{
+    public partial class Form1 : Form
+    {
+        private readonly string[] nombresTablas = { "clientes", "productos", "ventas", "proveedores" };
+        private DataGridView[] grids;
+
+        public Form1()
+        {
+            InitializeComponent();
+             
+        }
+
+       
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CrearDataGridViews();
+            CargarDatosEnGrids();
+        }
+
+        private void CrearDataGridViews()
+        {
+            grids = new DataGridView[4];
+            int panelWidth = this.ClientSize.Width / 2;
+            int panelHeight = (this.ClientSize.Height - 60) / 2;
+
+            for (int i = 0; i < 4; i++)
+            {
+                var dgv = new DataGridView
+                {
+                    Dock = DockStyle.Fill,
+                    ReadOnly = true,
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                    AllowUserToAddRows = false
+                };
+
+                var panel = new Panel
+                {
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new System.Drawing.Size(panelWidth, panelHeight),
+                    Location = new System.Drawing.Point(
+                        (i % 2) * panelWidth,
+                        (i / 2) * panelHeight + 40)
+                };
+
+                var label = new Label
+                {
+                    Text = $"Tabla: {nombresTablas[i]}",
+                    Height = 20,
+                    Dock = DockStyle.Top,
+                    BackColor = System.Drawing.Color.BlueViolet,
+                    Padding = new Padding(5, 0, 0, 0)
+                };
+
+                panel.Controls.Add(dgv);
+                panel.Controls.SetChildIndex(dgv, 0);
+                panel.Controls.Add(label);
+
+                this.Controls.Add(panel);
+                grids[i] = dgv;
+            }
+        }
+
+        private void CargarDatosEnGrids()
+        {
+            string connectionString = "server=localhost;user=root;password=;database=empresa_db;";
+
+            for (int i = 0; i < 4; i++)
+            {
+                try
+                {
+                    using (var conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        string query = $"SELECT * FROM `{nombresTablas[i]}`";
+                        using (var adapter = new MySqlDataAdapter(query, conn))
+                        {
+                            var dt = new DataTable();
+                            adapter.Fill(dt);
+                            //DatagridView1.Datasource = dt;
+                            grids[i].DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar la tabla '{nombresTablas[i]}':\n{ex.Message}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+    }
+}
