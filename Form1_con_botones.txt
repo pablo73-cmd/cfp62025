@@ -1,0 +1,134 @@
+using System;
+using System.Data;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
+namespace _221025
+{
+    public partial class Form1 : Form
+    {
+        private readonly string[] nombresTablas = { "clientes", "productos", "ventas", "proveedores" };
+        private DataGridView[] grids;
+        private Panel[] panels; // <-- nuevo: para poder ocultar/mostrar
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CrearDataGridViews();
+            CargarDatosEnGrids();
+            CrearBotonesToggle(); // <-- nuevo: crea los botones
+        }
+
+        private void CrearDataGridViews()
+        {
+            grids = new DataGridView[4];
+            panels = new Panel[4]; // <-- inicializar arreglo de paneles
+
+            int panelWidth = this.ClientSize.Width / 2;
+            int panelHeight = (this.ClientSize.Height - 60) / 2;
+
+            for (int i = 0; i < 4; i++)
+            {
+                var dgv = new DataGridView
+                {
+                    Dock = DockStyle.Fill,
+                    ReadOnly = true,
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                    AllowUserToAddRows = false
+                };
+
+                var panel = new Panel
+                {
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new System.Drawing.Size(panelWidth, panelHeight),
+                    Location = new System.Drawing.Point(
+                        (i % 2) * panelWidth,
+                        (i / 2) * panelHeight + 40)
+                };
+
+                var label = new Label
+                {
+                    Text = $"Tabla: {nombresTablas[i]}",
+                    Height = 20,
+                    Dock = DockStyle.Top,
+                    BackColor = System.Drawing.Color.BlueViolet,
+                    ForeColor = System.Drawing.Color.White,
+                    Padding = new Padding(5, 0, 0, 0)
+                };
+
+                panel.Controls.Add(dgv);
+                panel.Controls.SetChildIndex(dgv, 0);
+                panel.Controls.Add(label);
+
+                this.Controls.Add(panel);
+
+                grids[i] = dgv;
+                panels[i] = panel; // <-- guardar referencia
+            }
+        }
+
+        private void CargarDatosEnGrids()
+        {
+            string connectionString = "server=localhost;user=root;password=;database=empresa_db;";
+
+            for (int i = 0; i < 4; i++)
+            {
+                try
+                {
+                    using (var conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        string query = $"SELECT * FROM `{nombresTablas[i]}`";
+                        using (var adapter = new MySqlDataAdapter(query, conn))
+                        {
+                            var dt = new DataTable();
+                            adapter.Fill(dt);
+                            grids[i].DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar la tabla '{nombresTablas[i]}':\n{ex.Message}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void CrearBotonesToggle()
+        {
+            int x = 10;
+            int y = 10;
+            int width = 90;
+            int height = 25;
+            int spacing = 10;
+
+            for (int i = 0; i < 4; i++)
+            {
+                var btn = new Button
+                {
+                    Text = nombresTablas[i],
+                    Location = new System.Drawing.Point(x + (width + spacing) * i, y),
+                    Size = new System.Drawing.Size(width, height)
+                };
+
+                int index = i; // captura segura para lambda
+                btn.Click += (s, e) => ToggleGrid(index);
+
+                this.Controls.Add(btn);
+            }
+        }
+
+        private void ToggleGrid(int index)
+        {
+            if (index >= 0 && index < panels.Length)
+            {
+                panels[index].Visible = !panels[index].Visible;
+            }
+        }
+    }
+}
